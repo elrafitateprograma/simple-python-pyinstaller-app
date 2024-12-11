@@ -9,7 +9,7 @@ terraform {
 
 provider "docker" {}
 
-# Crear red Docker para conectar Jenkins y DinD
+
 resource "docker_network" "jenkins_network" {
   name = "jenkins"
 }
@@ -75,7 +75,7 @@ resource "docker_container" "jenkins" {
   volumes {
     volume_name    = docker_volume.jenkins_certs.name
     container_path = "/certs/client"
-    read_only      = true # Cambiado a 'read_only'
+    read_only      = true
   }
   ports {
     internal = 8080
